@@ -2,11 +2,13 @@
 Functions for parsing http data when you using Ethernet with Arduino.
 
 // Find parameter in URL string. If value present, return it in "value"
+
 bool find_key(char *stream, const char *key, char *value /*out*/, const int value_len);
 
 stream (input string), key (key to find), value (buffer for key value, if found), value_len (length of key value buffer)
 
 return true  - key found, parameter found and good or bad, false - key wasn't found
+
 value=NULL - if not value or parameter longer than value_len
 
 Note: find_key knows that key "note" is not "notebook"
