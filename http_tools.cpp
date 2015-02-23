@@ -23,20 +23,20 @@ bool find_key(char *stream, const char *key, char *value, const int value_len)
     long len;
     while (!k)
     {
-        k = strstr(p, key);  // что если нет ключа, то \n пробежит
+        k = strstr(p, key);  // 
         if (!k)
-            break; //нет ключа
+            break; //no key
         e = strpbrk(k, " &\n=");
         if (e)
         {
-            if (strlen(key) != (int)(e-k)) // точно наш ключ?  (мол != молоко)
+            if (strlen(key) != (int)(e-k)) // really our key? (comp != competition)
             {
                 p = e;
-                k = NULL;       //это не наш ключ, ищем дальше
+                k = NULL;       //it isn't our key
             }
-            else // искомый ключ (мол == мол)
+            else // key found (comp == comp)
             {
-                if (*e == '=')  //идет значение параметра
+                if (*e == '=')  //=value
                 {
                     k = e+1;
                     e = strpbrk(k, " &\n");
@@ -50,11 +50,12 @@ bool find_key(char *stream, const char *key, char *value, const int value_len)
                         memcpy(value,k,len);
                         *(value+len) = '\0';
                     }
+                    //if value longer than buffer also TRUE
                 }
-                return true; //даже если значение превышает буфер
+                return true; 
             }
         }
-        else //конец строки
+        else //end of line
         {
             if (value)
                 *value = '\0';
