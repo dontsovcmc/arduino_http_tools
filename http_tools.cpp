@@ -50,8 +50,8 @@ bool find_key(char *stream, const char *key, char *value, const int value_len)
                         memcpy(value,k,len);
                         *(value+len) = '\0';
                     }
-                    return true; //даже если значение превышает буфер
                 }
+                return true; //даже если значение превышает буфер
             }
         }
         else //конец строки
