@@ -23,20 +23,20 @@ bool find_key(char *stream, const char *key, char *value, const int value_len)
     long len;
     while (!k)
     {
-        k = strstr(p, key);  // что если нет ключа, то \n пробежит
+        k = strstr(p, key);  // С‡С‚Рѕ РµСЃР»Рё РЅРµС‚ РєР»СЋС‡Р°, С‚Рѕ \n РїСЂРѕР±РµР¶РёС‚
         if (!k)
-            break; //нет ключа
+            break; //РЅРµС‚ РєР»СЋС‡Р°
         e = strpbrk(k, " &\n=");
         if (e)
         {
-            if (strlen(key) != (int)(e-k)) // точно наш ключ?  (мол != молоко)
+            if (strlen(key) != (int)(e-k)) // С‚РѕС‡РЅРѕ РЅР°С€ РєР»СЋС‡?  (РјРѕР» != РјРѕР»РѕРєРѕ)
             {
                 p = e;
-                k = NULL;       //это не наш ключ, ищем дальше
+                k = NULL;       //СЌС‚Рѕ РЅРµ РЅР°С€ РєР»СЋС‡, РёС‰РµРј РґР°Р»СЊС€Рµ
             }
-            else // искомый ключ (мол == мол)
+            else // РёСЃРєРѕРјС‹Р№ РєР»СЋС‡ (РјРѕР» == РјРѕР»)
             {
-                if (*e == '=')  //идет значение параметра
+                if (*e == '=')  //РёРґРµС‚ Р·РЅР°С‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂР°
                 {
                     k = e+1;
                     e = strpbrk(k, " &\n");
@@ -50,11 +50,11 @@ bool find_key(char *stream, const char *key, char *value, const int value_len)
                         memcpy(value,k,len);
                         *(value+len) = '\0';
                     }
-                    return true; //даже если значение превышает буфер
+                    return true; //РґР°Р¶Рµ РµСЃР»Рё Р·РЅР°С‡РµРЅРёРµ РїСЂРµРІС‹С€Р°РµС‚ Р±СѓС„РµСЂ
                 }
             }
         }
-        else //конец строки
+        else //РєРѕРЅРµС† СЃС‚СЂРѕРєРё
         {
             if (value)
                 *value = '\0';
