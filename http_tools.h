@@ -9,6 +9,13 @@
 #ifndef http_tools_h
 #define http_tools_h
 
+#if ARDUINO >= 100
+#include <Arduino.h> // Arduino 1.0
+#else
+#include <WProgram.h> // Arduino 0022
+#endif
+
+
 /** @brief  Find parameter in URL string. If value present, return it in "value"
 *           param1=value1&param2=value2
 * @param stream    : input string 

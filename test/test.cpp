@@ -1,4 +1,7 @@
-#include "main.h"
+
+#ifdef TEST_ARDUINO_HTTP_TOOLS
+
+#include "test.h"
 #include "http_tools.h"
 #include <iostream>
 
@@ -67,6 +70,7 @@ void test_find_key()
     check_bad_value("param1=val4567890123456789&param2=val2", "param1", "val2");
 }
 
+
 int main(int argc, char **argv)
 {
     test_find_key();
@@ -78,3 +82,5 @@ int main(int argc, char **argv)
 
     getchar();
 }
+
+#endif
